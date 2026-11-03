@@ -46,6 +46,24 @@
 				<!-- Main -->
 					<div id="main">
 
+						<!-- Announcement: gun show (auto-hides after Nov 22, 2026 CT) -->
+							<article class="post" id="gun-show" data-hide-after="2026-11-23">
+								<header class="major">
+									<h2>Find us at the gun show, Nov 21&ndash;22</h2>
+									<p>W0MCW will have a table at the River City Rifle and Pistol Club gun show at the North Iowa Events Center in Mason City on <strong>Saturday, November 21</strong> and <strong>Sunday, November 22</strong>. Stop by and say hi, ask about ham radio, or find out how to get licensed. Want to help work the table? Email <a href="mailto:jb@n0jbe.com">jb@n0jbe.com</a>.</p>
+								</header>
+							</article>
+							<script>
+								(function () {
+									var el = document.getElementById('gun-show');
+									if (!el || !window.Intl) return;
+									try {
+										var today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+										if (today >= el.getAttribute('data-hide-after')) el.style.display = 'none';
+									} catch (e) {}
+								})();
+							</script>
+
 						<!-- About the Club -->
 							<article class="post featured">
 								<header class="major">
