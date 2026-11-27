@@ -65,7 +65,7 @@
 							</script>
 
 						<!-- Announcement: Winter Field Day 2027 (auto-hides from Jan 25, 2027 CT) -->
-							<article class="post" id="wfd-2027" data-hide-after="2027-01-25">
+							<article class="post" id="wfd-2027" data-hide-after="2027-01-24T16:00">
 								<header class="major">
 									<h2>NIARC Winter Field Day 2027</h2>
 									<p>Join us at the River City Rifle and Pistol Club (RCRPC) clubhouse, <a href="https://www.google.com/maps/search/?api=1&amp;query=20935+Jonquil+Ave%2C+Clear+Lake%2C+IA+50428" target="_blank" rel="noopener">20935 Jonquil Ave., Clear Lake, IA 50428</a>, from <strong>Saturday, January 23, 10:00 AM</strong> to <strong>Sunday, January 24, 4:00 PM CT</strong> for overnight operation. We'll run two stations, operating both digital and voice. Grid power and a propane heater are on site; a pass-the-hat will help cover propane. Visitors and operators are welcome. Cancelled if a winter storm warning is issued; the go/no-go call will be announced on the <a href="https://discord.gg/vpvGmYN5P">club Discord</a>.</p>
@@ -76,8 +76,10 @@
 									var el = document.getElementById('wfd-2027');
 									if (!el || !window.Intl) return;
 									try {
-										var today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
-										if (today >= el.getAttribute('data-hide-after')) el.style.display = 'none';
+										var p = {};
+										new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+										var now = p.year + '-' + p.month + '-' + p.day + 'T' + p.hour + ':' + p.minute;
+										if (now >= el.getAttribute('data-hide-after')) el.style.display = 'none';
 									} catch (e) {}
 								})();
 							</script>
